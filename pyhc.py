@@ -14,24 +14,24 @@ c = sp_c.speed_of_light * (10.0 ** 9)  # in nm/s to be used with wavevector in 1
 
 # K calculates beta (k_parallel to the planes) as a
 # function of wavelength (nm) and incident angle (rad)
-def f_beta(n_inc, l, theta):
+def f_beta(n_inc, wl, theta):
     '''calculates beta (k_parallel to the planes) as a function of wavelength (nm) and incident angle (rad)
 
     args:
     'n_inc' = refractive index of the incident medium
-    'l,theta' = incident wavelength in nm and incident angle in rad'''
+    'wl,theta' = incident wavelength in nm and incident angle in rad'''
 
-    return 2.0 * np.pi * n_inc * np.sin(theta) / l
+    return 2.0 * np.pi * n_inc * np.sin(theta) / wl
 
 
 # light angular frequency as a function of wavelength
-def f_omega(l):
+def f_omega(wl):
     '''calculates light angular frequency as a function of wavelength (nm)
 
     args:
-    'l' = incident wavelength in nm'''
+    'wl' = incident wavelength in nm'''
 
-    return 2.0 * np.pi * c / l
+    return 2.0 * np.pi * c / wl
 
 
 # A,B,C,D, coefficients of the unit cell translation operator
@@ -127,23 +127,11 @@ def f_M(n1, n_inc, omega, beta):
     k1 = sp.sqrt((n1 * omega / c) ** 2 - beta ** 2)
     k_inc = sp.sqrt((n_inc * omega / c) ** 2 - beta ** 2)
 
-    # print 'n1',n1
-    # print 'n_inc',n_inc
-    #
-    # print 'k1^2',(n1*omega/c)**2-beta**2
-    # print 'k_inc^2',(n_inc*omega/c)**2-beta**2
-    # print 'k1',sp.sqrt((n1*omega/c)**2-beta**2)
-    # print 'k_inc',sp.sqrt((n_inc*omega/c)**2-beta**2)
-    # print 'k1',k1
-    # print 'k_inc',k_inc
-
     # matrix elements
     M11 = 1.0 + k1 / k_inc
     M12 = 1.0 - k1 / k_inc
     M21 = 1.0 - k1 / k_inc
     M22 = 1.0 + k1 / k_inc
-
-    # print 'M11,M12,M21,M22',M11,M12,M21,M22
 
     return 0.5 * np.array([[M11, M12], [M21, M22]])
 
@@ -173,7 +161,7 @@ def f_N(a, b, n1, n_sub, omega, beta):
 
 # total stack operator
 def f_T(a, b, n1, n2, n_inc, n_sub, N, omega, beta):
-    '''Evaluates additional operator for the substrate
+    '''Evaluates the transfer matrix for a full stack
 
     args:
     'a,b'=Thicknesses of the 1D unit cell (b is the first thickness, a the second)
@@ -186,17 +174,8 @@ def f_T(a, b, n1, n2, n_inc, n_sub, N, omega, beta):
     m_A = f_A(a, b, n1, n2, N, omega, beta)
     m_N = f_N(a, b, n1, n_sub, omega, beta)
 
-    # print 'm_M',m_M,m_M.shape
-    # print 'm_A',m_A,m_A.shape
-    # print 'm_N',m_N,m_N.shape
-    # print 'np.dot(m_M,m_A)',np.dot(m_M,m_A),np.dot(m_M,m_A).shape
-
     # matrix elements
     m_T = np.dot(np.dot(m_M, m_A), m_N)
-
-    # print 'omega',omega
-    # print 'beta', beta
-    # print 'm_T',m_T
 
     return m_T
 
