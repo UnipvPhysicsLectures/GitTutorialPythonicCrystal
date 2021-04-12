@@ -7,7 +7,7 @@ A dummy python code to calculate the optical properties of 1D Photonic Crystals.
 Yeh P, Yariv A, Hong C-S (1977) **Electromagnetic propagation in periodic stratified media. I. General theory.** *J Opt Soc Am 67:423–438*
 [doi: 10.1364/JOSA.67.000423](http://dx.doi.org/10.1364/JOSA.67.000423)
 
-For the time being we are only dealing with TE modes (which are specially interesting for **Bloch Surface Waves**). TM mode calculations will be added along the way
+For the time being we are only dealing with TE modes (which are specially interesting for **Bloch Surface Waves**).
 
 ## Installation
 
