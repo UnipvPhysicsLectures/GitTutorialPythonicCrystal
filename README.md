@@ -11,7 +11,7 @@ For the time being we are only dealing with TE modes (which are specially intere
 
 ## Installation
 
-Installing **PythonicCrystal** should be fairly easy. First of all you need a python distribution on your system. The simplest thing to do if you are using **Windows** or **OSX** would be to install [Anaconda](https://store.continuum.io/cshop/anaconda/), a beautiful, free, and easy to use python distribution: the relevant installations instructions are found [here](http://docs.continuum.io/anaconda/install.html). If you are using **Linux** you probably already know how to install python on your system, nevertheless my advice is to also install [The IPython Notebook](http://ipython.org/notebook.html), which is already bundled in Anaconda.
+Installing **PythonicCrystal** should be fairly easy. First of all you need a python distribution on your system. The simplest thing to do if you are using **Windows** or **OSX** would be to install [Anaconda](https://store.continuum.io/cshop/anaconda/), a beautiful, free, and easy to use python distribution: the relevant installations instructions are found [here](http://docs.continuum.io/anaconda/install.html). If you are using **Linux** you probably already know how to install python on your system.
 
 The second step would be installing **PythonicCrystal** itself. If you are familiar with [git](http://git-scm.com/) and [github](https://github.com/) you can simply clone the repository, otherwise just [download](https://github.com/gevero/py-matrix/archive/master.zip) the zipped version of the repo and unpack it wherever you like.
 
